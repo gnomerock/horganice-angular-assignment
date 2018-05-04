@@ -1,17 +1,6 @@
-<h2>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <div class="input">
-                    <input type="text" ng-model="test"/>
-                </div>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
-    </h1>
-  <div class="container">
+<div class="container">
     <div class="row">
-        <div ng-repeat='product in products | filter:test' class="col-md-4">
+        <div ng-repeat='product in products | filter:test' class="col-lg-4 col-md-6 col-sm-12">
             <a href="/#!/page2/{{product.apartmentId}}">
                 <blockquote>
                     <img ng-src="{{product.apartmentpic}}"style="width:130px; height: 130px;"/>

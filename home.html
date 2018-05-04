@@ -12,7 +12,7 @@
   <div class="container">
     <div class="row">
         <div ng-repeat='product in products | filter:test' class="col-md-4">
-            <a href="/#!/page2">
+            <a href="/#!/page2/{{product.apartmentId}}">
                 <blockquote>
                     <img ng-src="{{product.apartmentpic}}"style="width:130px; height: 130px;"/>
                     <p>Name : {{product.apartmentName}}</p>

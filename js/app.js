@@ -2,7 +2,7 @@ angular
     .module('hgnApp',['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider
-        .when("/page2", {
+        .when("/page2/:apartmentId", {
             templateUrl : "page2.html",
             controller : "page2Crtl"
         })    
@@ -21,8 +21,32 @@ angular
         }
 
     })
-    .controller('page2Crtl', function ($scope) {
+    .controller('page2Crtl', function ($http,$scope,$routeParams) {
         $scope.msg = "page2Crtl";
+        $scope.apartmentId = $routeParams.apartmentId;
+
+        $http.get('/dataset.json').then(function(data){
+            $scope.products = data.data;
+            console.log($scope.products)
+
+            for(var product of $scope.products){
+
+                console.log(product.apartmentId)
+                console.log($scope.apartmentId)
+
+                if(product.apartmentId == $scope.apartmentId){
+                    $scope.product = product
+                    console.log(product)
+                }
+            }
+
+            if(!$scope.product){
+                $scope.isPagenotfound = true;
+            }
+        })
+
+
+
     })
     .controller('homeCrtl', function ($http,$scope) {
         
@@ -32,7 +56,7 @@ angular
             $scope.products = data.data;
             console.log(data)
         })
-    });;
+    });
    
 
     

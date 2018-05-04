@@ -1,4 +1,9 @@
-<h1>London</h1>
-<h3>London is the capital city of England.</h3>
-<p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-<!-- <p>{{msg}}</p> -->
+<div ng-if="isPagenotfound == true">
+<p>ไม่เจอ</p>
+</div>
+<div ng-hide="isPagenotfound == true">
+<p>{{product.apartmentName}}</p>
+<p>{{product.apartmentAddress}}</p>
+<p>{{product.apartmentPhoneNo}}</p>
+<img ng-src="{{product.apartmentpic}}"style="width:130px; height: 130px;"/>
+</div>              

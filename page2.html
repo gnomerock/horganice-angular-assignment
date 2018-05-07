@@ -1,9 +1,29 @@
 <div ng-if="isPagenotfound == true">
 <p>ไม่เจอ</p>
 </div>
+<!-- 
 <div ng-hide="isPagenotfound == true">
 <p>{{product.apartmentName}}</p>
 <p>{{product.apartmentAddress}}</p>
 <p>{{product.apartmentPhoneNo}}</p>
 <img ng-src="{{product.apartmentpic}}"style="width:130px; height: 130px;"/>
-</div>              
+</div>               -->
+<div ng-hide="isPagenotfound == true"></div>
+<div class="row">
+          <div class="card">
+            <img class="card-img-top" src="{{product.apartmentpic}}" style="width:200px; height: 200px;" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">ชื่อ : {{product.apartmentName}}</h5>
+              </div>
+          </div>
+        </div>
+
+        <div class="row">
+                <div class="card">
+                    <div class="card-body text-secondary">
+                        <h5 class="card-title">ที่อยู่ : {{product.apartmentAddress}}</h5>
+                        <p class="card-text">เบอร์โทร : {{product.apartmentPhoneNo}}</p>
+                        </div>
+                </div>
+              </div>
+            </div> 

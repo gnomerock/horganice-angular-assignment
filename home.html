@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div ng-repeat='product in products | filter:test' class="col-lg-4 col-md-6 col-sm-12">
             <a href="/#!/page2/{{product.apartmentId}}">
@@ -10,4 +10,16 @@
             </a>
         </div>
     </div>
-</div>
+</div> -->
+
+
+<div class="row">
+    <div ng-repeat='product in products | filter:test' class="col-lg-4 col-md-6 col-sm-12">
+      <div class="card">
+        <img class="card-img-top" src="{{product.apartmentpic}}" style="width:200px; height: 200px;" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Name : {{product.apartmentName}}</h5>
+          <a href="/#!/page2/{{product.apartmentId}}" class="btn btn-primary">ดูรายละเอียด</a>
+        </div>
+      </div>
+    </div>

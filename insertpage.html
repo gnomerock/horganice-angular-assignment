@@ -1,16 +1,27 @@
 <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text" id="inputName">ชื่อหอพัก</span>
+      <span class="input-group-text" id="taqName">ชื่อหอพัก</span>
     </div>
     <input ng-model="inputName" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
   </div>
-  <p id="demo" >{{inputName}}</p>
+  <p id="demoName" >{{inputName}}</p>
 
   <div class="input-group mb-3">
     <div class="input-group-prepend">
-      <span class="input-group-text" id="inputName">ที่อยู่</span>
+      <span class="input-group-text" id="taqAdr">ที่อยู่</span>
     </div>
     <input ng-model="inputAdrress" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
   </div>
-  <button class="btn btn-outline-secondary" ng-click="submit('setName',inputName,'setAdrress',inputAdrress)" type="button">Button</button>
-  <p id="demo" >{{inputAdrress}}</p>
+  <p id="demoAdr" >{{inputAdrress}}</p>
+  
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="taqPhone">เบอร์โทร</span>
+    </div>
+    <input ng-model="inputPhone" type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+  </div>
+  <p id="demoPhone" >{{inputPhone}}</p>
+
+  <button class="btn btn-outline-secondary" ng-click="submit('setName',inputName,'setAdrress',inputAdrress,'setPhone',inputPhone)" type="button">Button</button>
+
+

@@ -64,10 +64,10 @@ angular
     .controller('insertCtrl', function($scope, localStorageService) {
         //...set
         $scope.inputName = "";
-        $scope.submit = function(key, val,key, val){
+        $scope.submit = function(key, val,key, val,key, val){
             console.log(key);
             console.log(val);
-            localStorageService.set(key, val,key, val);
+            localStorageService.set(key, val,key, val,key, val);
             console.log(localStorageService.get(key));
             
         }

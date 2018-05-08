@@ -10,20 +10,20 @@
 </div>               -->
 <div ng-hide="isPagenotfound == true"></div>
 <div class="row">
-          <div class="card">
-            <img class="card-img-top" src="{{product.apartmentpic}}" style="width:200px; height: 200px;" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">ชื่อ : {{product.apartmentName}}</h5>
-              </div>
-          </div>
-        </div>
+  <div class="card carddetail-margin">
+    <img class="card-img-top detail-margin" src="{{product.apartmentpic}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">ชื่อ : {{product.apartmentName}}</h5>
+    </div>
+  </div>
+</div>
 
-        <div class="row">
-                <div class="card">
-                    <div class="card-body text-secondary">
-                        <h5 class="card-title">ที่อยู่ : {{product.apartmentAddress}}</h5>
-                        <p class="card-text">เบอร์โทร : {{product.apartmentPhoneNo}}</p>
-                        </div>
-                </div>
-              </div>
-            </div> 
+<div class="row">
+  <div class="card carddetail-margin">
+      <div class="card-body text-secondary">
+        <h5 class="card-title">ที่อยู่ : {{product.apartmentAddress}}</h5>
+        <p class="card-text">เบอร์โทร : {{product.apartmentPhoneNo}}</p>
+      </div>
+    </div>
+  </div>
+</div> 

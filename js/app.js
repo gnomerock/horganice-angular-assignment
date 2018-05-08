@@ -1,5 +1,5 @@
 angular
-    .module('hgnApp',['ngRoute'])
+    .module('hgnApp',['ngRoute', 'LocalStorageModule'])
     .config(function($routeProvider) {
         $routeProvider
         .when("/page2/:apartmentId", {
@@ -9,6 +9,10 @@ angular
         .when("/home", {
             templateUrl : "home.html",
             controller : "homeCrtl"
+        })
+        .when("/insertpage", {
+            templateUrl : "insertpage.html",
+            controller : "insertCtrl"
         });
     })
     .controller('MainCtrl', function($scope) {
@@ -56,7 +60,20 @@ angular
             $scope.products = data.data;
             console.log(data)
         })
-    });
+    })
+    .controller('insertCtrl', function($scope, localStorageService) {
+        //...set
+        $scope.inputName = "";
+        $scope.submit = function(key, val,key, val){
+            console.log(key);
+            console.log(val);
+            localStorageService.set(key, val,key, val);
+            console.log(localStorageService.get(key));
+            
+        }
+        //...
+      })
+
    
 
     

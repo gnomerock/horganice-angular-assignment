@@ -57,25 +57,9 @@ angular
 
         })
 
-        // $http.get('/dataset.json').then(function(data){
-        //     $scope.products = data.data;
-        //     console.log($scope.products)
-
-        //     for(var product of $scope.products){
-
-        //         console.log(product.apartmentId)
-        //         console.log($scope.apartmentId)
-
-        //         if(product.apartmentId == $scope.apartmentId){
-        //             $scope.product = product
-        //             console.log(product)
-        //         }
-        //     }
-
-        //     if(!$scope.product){
-        //         $scope.isPagenotfound = true;
-        //     }
-        // })
+        $scope.delFunc = function removeItem(key) {
+            return localStorageService.remove(key);
+           }
 
     })
     .controller('homeCrtl', function ($rootScope,$http,$scope,Apartment) {
@@ -84,26 +68,38 @@ angular
         $scope.apartments = [];
 
         Apartment.loadApartment().then(function(apartments){
+            
             $scope.apartments = apartments
             $scope.filteredApartment = apartments
             console.log($scope.apartments)
+            $scope.myFunc('')
         })
         
         $rootScope.$on('clickRef',function(){
             console.log('ready to load')
             Apartment.loadApartment().then(function(apartments){
+                
                 $scope.apartments = apartments
                 $scope.filteredApartment = apartments
                 console.log($scope.apartments)
+                $scope.myFunc('')
             })
     
         })
 
         $scope.myFunc = function(inputtext) {
-            $scope.filteredApartment = $scope.apartments.filter(function(apartment){ 
-                return  (apartment.apartmentName.indexOf(inputtext) > -1)
-                
-            });
+            console.log('type input',typeof inputtext)
+            if(inputtext==""){
+                $scope.filteredApartment = $scope.apartments
+                $scope.$apply()
+                console.log('data " " ',$scope.filteredApartment)
+
+            }else{
+                $scope.filteredApartment = $scope.apartments.filter(function(apartment){ 
+                    return  (apartment.apartmentName.indexOf(inputtext) > -1)
+                });
+            }
+
         };
         
     })
@@ -111,17 +107,7 @@ angular
         //...set
         $scope.inputName = "";
         $scope.submit = function(apartmentName,apartmentAdr,apartmentPhone){
-            localStorageService.set('setName', apartmentName);
-            localStorageService.set('setAdr', apartmentAdr);
-            localStorageService.set('setPhone', apartmentPhone);
-            console.log(localStorageService.get('setName'));
-            console.log(localStorageService.get('setAdr'));
-            console.log(localStorageService.get('setPhone'));
-
-            // var storedNames = JSON.parse(localStorageService.get('setName'));
-            // var storedAdr = JSON.parse(localStorageService.get('setAdr'));
-            // var storedPhone = JSON.parse(localStorageService.get('setPhone'));
-
+            
             var apartmentObj = {
                 "apartmentId": "M160KSD0s2",
                 "apartmentName": apartmentName,
@@ -150,16 +136,30 @@ angular
                 if(isLoad){
                     return Promise.resolve(this.getApartment())
                 }else{
-                    return $http.get('/dataset.json').then(function(data){
-                        apartments = data.data
-                        isLoad = true
+                    
+                //     return $http.get('/dataset.json').then(function(data){
+                //         apartments = data.data
+                //         return Promise.resolve(apartments)
+                //    })
+
+                   if(!localStorage.getItem("cast")){
+                        return $http.get('/dataset.json').then(function(data){
+                            apartments = data.data
+                            return Promise.resolve(apartments)
+                        })
+                    }else{
+                        //
+                        apartments = JSON.parse(localStorage.getItem("cast"))
                         return Promise.resolve(apartments)
-                   })
+                    }
+                    
                 }
             },
             addApartment: function(name){
                 //
                 apartments.push(name)
+                localStorage.setItem("cast", JSON.stringify(apartments));
+                console.log(JSON.parse(localStorage.getItem("cast")))
             }
         }
       });

@@ -11,12 +11,14 @@
         </div>
     </div>
 </div> -->
+
 <nav class="navbar navbar-light bg-light bar-pic">
-    <a class="navbar-brand bar-seacrh" ><input class="form-control mr-sm-2" type="text" ng-model="test"></a>
+    <a class="navbar-brand bar-seacrh" ><input ng-change="myFunc(test)" class="form-control mr-sm-2" type="text" ng-model="test"></a>
   </nav>
 <div class="row">
-    <div ng-repeat='product in apartments | filter:test' class="col-lg-4 col-md-6 col-sm-12 card-margin">
-      <div class="card back-card">
+    <!-- <div ng-repeat='product in apartments | filter:test' class="col-lg-4 col-md-6 col-sm-12 card-margin"> -->
+    <div ng-repeat='product in filteredApartment' class="col-lg-4 col-md-6 col-sm-12 card-margin">
+        <div class="card back-card">
         <img class="card-img-top pic-margin" src="{{product.apartmentpic}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title ">Name : {{product.apartmentName}}</h5>

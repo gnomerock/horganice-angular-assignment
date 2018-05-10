@@ -9,6 +9,7 @@ angular
         .when("/home", {
             templateUrl : "home.html",
             controller : "homeCrtl"
+            
         })
         .when("/insertpage", {
             templateUrl : "insertpage.html",
@@ -22,7 +23,9 @@ angular
 
         $scope.addtext = function(textProduct){
             $scope.textProduct.push($scope)
+            
         }
+
 
     })
     .controller('page2Crtl', function ($http,$scope,$routeParams) {
@@ -52,16 +55,35 @@ angular
 
 
     })
-    .controller('homeCrtl', function ($http,$scope,Apartment) {
+    .controller('homeCrtl', function ($rootScope,$http,$scope,Apartment) {
+        
         
         $scope.apartments = [];
 
         Apartment.loadApartment().then(function(apartments){
             $scope.apartments = apartments
+            $scope.filteredApartment = apartments
+            console.log($scope.apartments)
+        })
+        
+        $rootScope.$on('clickRef',function(){
+            console.log('ready to load')
+            Apartment.loadApartment().then(function(apartments){
+                $scope.apartments = apartments
+                $scope.filteredApartment = apartments
+                console.log($scope.apartments)
+            })
+    
         })
 
+        $scope.myFunc = function(inputtext) {
+            $scope.filteredApartment = $scope.apartments.filter(function(apartment){
+                return inputtext == apartment.apartmentName 
+            });
+        };
+        
     })
-    .controller('insertCtrl', function($scope, localStorageService, Apartment) {
+    .controller('insertCtrl', function($rootScope,$scope, localStorageService, Apartment) {
         //...set
         $scope.inputName = "";
         $scope.submit = function(apartmentName,apartmentAdr,apartmentPhone){
@@ -85,24 +107,31 @@ angular
             }
 
             Apartment.addApartment(apartmentObj)
-            //กลับหน้า home
             //ref หน้า home
+            $rootScope.$emit('clickRef')
         }
         
         //...
       })
       .factory('Apartment', function ($http) {
         var apartments = []
+        var isLoad = false
 
         return {
             getApartment: function(){
                 return apartments
             },
             loadApartment: function(){
-               return $http.get('/dataset.json').then(function(data){
-                    apartments = data.data
-                    return Promise.resolve(apartments)
-               }) 
+
+                if(isLoad){
+                    return Promise.resolve(this.getApartment())
+                }else{
+                    return $http.get('/dataset.json').then(function(data){
+                        apartments = data.data
+                        isLoad = true
+                        return Promise.resolve(apartments)
+                   })
+                }
             },
             addApartment: function(name){
                 //

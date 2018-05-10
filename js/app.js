@@ -28,7 +28,7 @@ angular
 
 
     })
-    .controller('page2Crtl', function ($http,$scope,$routeParams,Apartment) {
+    .controller('page2Crtl', function ($http,$scope,$routeParams,Apartment,localStorageService) {
         $scope.msg = "page2Crtl";
         $scope.apartmentId = $routeParams.apartmentId;
         console.log($scope.apartmentId)
@@ -57,9 +57,10 @@ angular
 
         })
 
-        $scope.delFunc = function removeItem(key) {
-            return localStorageService.remove(key);
-           }
+        $scope.delFunc = function(idFordel) {
+            Apartment.deleteApartment(idFordel)
+        }
+        
 
     })
     .controller('homeCrtl', function ($rootScope,$http,$scope,Apartment) {
@@ -109,7 +110,7 @@ angular
         $scope.submit = function(apartmentName,apartmentAdr,apartmentPhone){
             
             var apartmentObj = {
-                "apartmentId": "M160KSD0s2",
+                "apartmentId": Math.floor((Math.random()*10000)+1),// random มีโอกาสซ้ำได้ แนะนำให้ศึกษาวิธีใช้ hash เช่น md5
                 "apartmentName": apartmentName,
                 "apartmentAddress": apartmentAdr,
                 "apartmentPhoneNo": apartmentPhone,
@@ -120,6 +121,7 @@ angular
             //ref หน้า home
             $rootScope.$emit('clickRef')
         }
+
         
         //...
       })
@@ -137,10 +139,6 @@ angular
                     return Promise.resolve(this.getApartment())
                 }else{
                     
-                //     return $http.get('/dataset.json').then(function(data){
-                //         apartments = data.data
-                //         return Promise.resolve(apartments)
-                //    })
 
                    if(!localStorage.getItem("cast")){
                         return $http.get('/dataset.json').then(function(data){
@@ -160,6 +158,20 @@ angular
                 apartments.push(name)
                 localStorage.setItem("cast", JSON.stringify(apartments));
                 console.log(JSON.parse(localStorage.getItem("cast")))
+            },
+
+            deleteApartment: function(id) {
+                
+                console.log('id send',id)
+                for(var apartment of apartments){
+                    if(apartment.apartmentId == id){
+                        apartments.splice( apartments.indexOf(apartment.apartmentId) );
+                    }
+                }
+                console.log('data at del',apartments)
+                
+                localStorage.setItem("cast", JSON.stringify(apartments));
+
             }
         }
       });

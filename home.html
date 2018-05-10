@@ -17,7 +17,7 @@
   </nav>
 <div class="row">
     <!-- <div ng-repeat='product in apartments | filter:test' class="col-lg-4 col-md-6 col-sm-12 card-margin"> -->
-    <div ng-repeat='product in filteredApartment track by product.apartmentPhoneNo' class="col-lg-4 col-md-6 col-sm-12 card-margin">
+    <div ng-repeat='product in filteredApartment track by product.apartmentId' class="col-lg-4 col-md-6 col-sm-12 card-margin">
         <div class="card back-card">
         <img class="card-img-top pic-margin" src="{{product.apartmentpic}}" alt="Card image cap">
         <div class="card-body">

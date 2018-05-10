@@ -28,31 +28,54 @@ angular
 
 
     })
-    .controller('page2Crtl', function ($http,$scope,$routeParams) {
+    .controller('page2Crtl', function ($http,$scope,$routeParams,Apartment) {
         $scope.msg = "page2Crtl";
         $scope.apartmentId = $routeParams.apartmentId;
+        console.log($scope.apartmentId)
+        $scope.apartments = [];
+        
+        Apartment.loadApartment().then(function(apartments){
+            $scope.apartments = apartments
+            $scope.filteredApartment = apartments
+            console.log($scope.apartments)
 
-        $http.get('/dataset.json').then(function(data){
-            $scope.products = data.data;
-            console.log($scope.products)
-
-            for(var product of $scope.products){
+            for(var product of $scope.apartments){
 
                 console.log(product.apartmentId)
                 console.log($scope.apartmentId)
 
                 if(product.apartmentId == $scope.apartmentId){
                     $scope.product = product
-                    console.log(product)
+                    $scope.$apply()
+                    console.log('test',product)
                 }
             }
 
-            if(!$scope.product){
+            if(!$scope.apartments){
                 $scope.isPagenotfound = true;
             }
+
         })
 
+        // $http.get('/dataset.json').then(function(data){
+        //     $scope.products = data.data;
+        //     console.log($scope.products)
 
+        //     for(var product of $scope.products){
+
+        //         console.log(product.apartmentId)
+        //         console.log($scope.apartmentId)
+
+        //         if(product.apartmentId == $scope.apartmentId){
+        //             $scope.product = product
+        //             console.log(product)
+        //         }
+        //     }
+
+        //     if(!$scope.product){
+        //         $scope.isPagenotfound = true;
+        //     }
+        // })
 
     })
     .controller('homeCrtl', function ($rootScope,$http,$scope,Apartment) {
@@ -77,8 +100,9 @@ angular
         })
 
         $scope.myFunc = function(inputtext) {
-            $scope.filteredApartment = $scope.apartments.filter(function(apartment){
-                return inputtext == apartment.apartmentName 
+            $scope.filteredApartment = $scope.apartments.filter(function(apartment){ 
+                return  (apartment.apartmentName.indexOf(inputtext) > -1)
+                
             });
         };
         

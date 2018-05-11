@@ -1,24 +1,25 @@
 <div ng-if="isPagenotfound == true">
 <p>ไม่เจอ</p>
 </div>
+
 <div ng-hide="isPagenotfound == true"></div>
 <div class="row">
-  <div class="card carddetail-margin back-card">
+  <div class="card carddetail-margin back-detail-card">
     <img class="card-img-top detail-margin" src="{{product.apartmentpic}}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">ชื่อ : {{product.apartmentName}}</h5>
+      <h5 class="card-title text-color">ชื่อ : {{product.apartmentName}}</h5>
     </div>
   </div>
 </div>
 
 <div class="row">
-  <div class="card carddetail-margin back-detail">
+  <div class="card carddetail-margin back-detail-card2">
       <div class="card-body text-secondary">
         <h5 class="card-title">ที่อยู่ : {{product.apartmentAddress}}</h5>
         <p class="card-text">เบอร์โทร : {{product.apartmentPhoneNo}}</p>
-        <a class="btn btn-primary"  ng-click="delFunc(product.apartmentId)" href="/#!/home" role="button">ลบ</a>
-        <a class="btn btn-primary"  ng-click="showDetails = ! showDetails" role="button">แก้ไข</a>
-      </div>
+        <button type="button" class="btn btn-outline-danger" ng-click="delFunc(product.apartmentId)" href="/#!/home">ลบข้อมูล</button>
+        <button type="button" class="btn btn-outline-secondary" ng-click="showDetails = !showDetails">แก้ไขข้อมูล</button>
+        </div>
     </div>
   </div>
 </div> 

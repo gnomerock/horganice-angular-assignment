@@ -1,5 +1,5 @@
 angular
-    .module('hgnApp',['ngRoute', 'LocalStorageModule'])
+    .module('hgnApp',['ngRoute', 'LocalStorageModule', 'angular-md5'])
     .config(function($routeProvider) {
         $routeProvider
         .when("/page2/:apartmentId", {
@@ -109,17 +109,14 @@ angular
         };
         
     })
-    .controller('insertCtrl', function($rootScope,$scope, localStorageService, Apartment) {
+    .controller('insertCtrl', function($rootScope,$scope, localStorageService, Apartment,md5) {
         //...set
         $scope.inputName = "";
         $scope.submit = function(apartmentName,apartmentAdr,apartmentPhone){
-            // var hash = md5("value");
-            // $scope.nInfo = new Date();
 
             var apartmentObj = {
 
-                // "apartmentId":  md5(apartmentName+$scope.nInfo),
-                "apartmentId": Math.floor((Math.random()*10000)+1),// random มีโอกาสซ้ำได้ แนะนำให้ศึกษาวิธีใช้ hash เช่น md5
+                "apartmentId":  md5.createHash(apartmentName + new Date() || ''),
                 "apartmentName": apartmentName,
                 "apartmentAddress": apartmentAdr,
                 "apartmentPhoneNo": apartmentPhone,
@@ -127,7 +124,6 @@ angular
             }
 
             Apartment.addApartment(apartmentObj)
-            //ref หน้า home
             $rootScope.$emit('clickRef')
         }
 

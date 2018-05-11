@@ -1,13 +1,6 @@
 <div ng-if="isPagenotfound == true">
 <p>ไม่เจอ</p>
 </div>
-<!-- 
-<div ng-hide="isPagenotfound == true">
-<p>{{product.apartmentName}}</p>
-<p>{{product.apartmentAddress}}</p>
-<p>{{product.apartmentPhoneNo}}</p>
-<img ng-src="{{product.apartmentpic}}"style="width:130px; height: 130px;"/>
-</div>               -->
 <div ng-hide="isPagenotfound == true"></div>
 <div class="row">
   <div class="card carddetail-margin back-card">
@@ -24,7 +17,28 @@
         <h5 class="card-title">ที่อยู่ : {{product.apartmentAddress}}</h5>
         <p class="card-text">เบอร์โทร : {{product.apartmentPhoneNo}}</p>
         <a class="btn btn-primary"  ng-click="delFunc(product.apartmentId)" href="/#!/home" role="button">ลบ</a>
+        <a class="btn btn-primary"  ng-click="showDetails = ! showDetails" role="button">แก้ไข</a>
       </div>
     </div>
   </div>
 </div> 
+  <div class="card" ng-show="showDetails">
+    <div class="card-body">
+      <form>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">ชื่อหอพัก</label>
+          <input ng-model="inputName" type="text" class="form-control" id="inputEmail4" placeholder="ชื่อหอพัก">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAddress">ที่อยู่</label>
+          <input ng-model="inputAdrress" type="text" class="form-control" id="inputAddress" placeholder="ที่อยู่">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAddress2">เบอร์โทร</label>
+          <input ng-model="inputPhone" type="text" class="form-control" id="inputAddress2" placeholder="เบอร์โทร">
+        </div>
+        <a class="btn btn-primary"  ng-click="editFunc(product.apartmentId,inputName,inputAdrress,inputPhone)" href="/#!/home" role="button">updateข้อมูล</a>
+        
+      </form>
+    </div>
+  </div>

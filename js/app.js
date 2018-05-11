@@ -61,6 +61,10 @@ angular
             Apartment.deleteApartment(idFordel)
         }
         
+        $scope.editFunc = function(idApat,nameApat,adrAprt,phoneAprt) {
+            Apartment.editApartment(idApat,nameApat,adrAprt,phoneAprt)
+        }
+
 
     })
     .controller('homeCrtl', function ($rootScope,$http,$scope,Apartment) {
@@ -90,6 +94,7 @@ angular
 
         $scope.myFunc = function(inputtext) {
             console.log('type input',typeof inputtext)
+            // window.localStorage.removeItem("cast");
             if(inputtext==""){
                 $scope.filteredApartment = $scope.apartments
                 $scope.$apply()
@@ -108,8 +113,12 @@ angular
         //...set
         $scope.inputName = "";
         $scope.submit = function(apartmentName,apartmentAdr,apartmentPhone){
-            
+            // var hash = md5("value");
+            // $scope.nInfo = new Date();
+
             var apartmentObj = {
+
+                // "apartmentId":  md5(apartmentName+$scope.nInfo),
                 "apartmentId": Math.floor((Math.random()*10000)+1),// random มีโอกาสซ้ำได้ แนะนำให้ศึกษาวิธีใช้ hash เช่น md5
                 "apartmentName": apartmentName,
                 "apartmentAddress": apartmentAdr,
@@ -171,6 +180,25 @@ angular
                 console.log('data at del',apartments)
                 
                 localStorage.setItem("cast", JSON.stringify(apartments));
+
+            },
+
+            editApartment : function(idApat,nameApat,adrAprt,phoneAprt){
+
+                console.log('id,Name,Adr,tel',idApat,nameApat,adrAprt,phoneAprt)
+
+                for(var apartment of apartments){
+                    if(apartment.apartmentId == idApat){
+                        console.log('do it !!!!!!!')
+                        apartment.apartmentName = nameApat
+                        apartment.apartmentAddress = adrAprt
+                        apartment.apartmentPhoneNo = phoneAprt
+
+                        localStorage.setItem("cast", JSON.stringify(apartments));
+                    }
+                }
+
+                console.log(apartments)
 
             }
         }

@@ -1,0 +1,22 @@
+
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">ชื่อหอพัก</label>
+          <input ng-model="inputName" type="text" class="form-control" id="inputEmail4" placeholder="ชื่อหอพัก">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAddress">ที่อยู่</label>
+          <input ng-model="inputAdrress" type="text" class="form-control" id="inputAddress" placeholder="ที่อยู่">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputAddress2">เบอร์โทร</label>
+          <input ng-model="inputPhone" type="text" class="form-control" id="inputAddress2" placeholder="เบอร์โทร">
+        </div>
+        <a class="btn btn-primary"  ng-click="submit(inputName,inputAdrress,inputPhone)" href="/#!/home" role="button">เพิ่มหอ</a>
+        
+      </form>
+    </div>
+  </div>
+    

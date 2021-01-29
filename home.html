@@ -1,0 +1,42 @@
+<!-- <div class="container">
+    <div class="row">
+        <div ng-repeat='product in products | filter:test' class="col-lg-4 col-md-6 col-sm-12">
+            <a href="/#!/page2/{{product.apartmentId}}">
+                <blockquote>
+                    <img ng-src="{{product.apartmentpic}}"style="width:130px; height: 130px;"/>
+                    <p>Name : {{product.apartmentName}}</p>
+                    <footer>Address : {{product.apartmentAddress}}  Phone : {{product.apartmentPhoneNo}}</footer>
+                </blockquote> 
+            </a>
+        </div>
+    </div>
+</div> -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+<nav class="navbar navbar-light bg-light bar-pic">
+    <a class="navbar-brand bar-seacrh" ><input ng-change="myFunc(test)" class="form-control mr-sm-2" type="text" ng-model="test" placeholder="กรอกชื่อหอพักเพื่อค้นหา"></a>
+  </nav>
+<div class="row">
+    <!-- <div ng-repeat='product in apartments | filter:test' class="col-lg-4 col-md-6 col-sm-12 card-margin"> -->
+    <div ng-repeat='product in filteredApartment track by product.apartmentId' class="col-lg-4 col-md-6 col-sm-12 card-margin">
+        <div class="card back-card">
+        <img class="card-img-top pic-margin" src="{{product.apartmentpic}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title text-color">ชื่อ : {{product.apartmentName}}</h5>
+
+          <a href="/#!/page2/{{product.apartmentId}}" class="btn btn-primary btn-sm">ดูรายละเอียด</a>
+        </div>
+      </div>
+    </div>

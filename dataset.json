@@ -3,30 +3,35 @@
         "apartmentId": "on1Al20f43",
         "apartmentName": "หอพักร่มเย็น",
         "apartmentAddress": "523/2 ถ.สองทุ่ง ต.ท่าน้อย อ.เมือง นครราชศรีมา",
-        "apartmentPhoneNo": "0818682211"
+        "apartmentPhoneNo": "0818682211",
+        "apartmentpic": "https://thumbs.dreamstime.com/z/flat-residential-brick-house-city-scenery-buildings-retro-metropolitan-background-vector-illustration-62218397.jpg"
     },
     {
         "apartmentId": "MMD289sSA",
         "apartmentName": "หอพักกาญกนก",
         "apartmentAddress": "56 หมู่ 3 ถ.เนตรทิพย์ ต.ศรีใหญ่ อ.เมือง ลำปาง",
-        "apartmentPhoneNo": "089-2294657"
+        "apartmentPhoneNo": "089-2294657",
+        "apartmentpic": "http://millionaire-academy.com/wp-content/uploads/2013/07/%E0%B8%98%E0%B8%B8%E0%B8%A3%E0%B8%81%E0%B8%B4%E0%B8%88%E0%B8%AB%E0%B8%AD%E0%B8%9E%E0%B8%B1%E0%B8%81.png"
     },
     {
         "apartmentId": "NJslp37KK",
         "apartmentName": "หอใจดี",
         "apartmentAddress": "11/11 ถ.นาน้อย ต.ตาปี อ.เมือง พิษณุโลก",
-        "apartmentPhoneNo": "082034849, 0872234890"
+        "apartmentPhoneNo": "082034849, 0872234890",
+        "apartmentpic": "http://www.samuitimes.com/wp-content/uploads/2015/01/hotel.png"
     },
     {
         "apartmentId": "LKNAS034",
         "apartmentName": "หอพักร่มเย็น",
         "apartmentAddress": "32/23 ต.ชัยชาญ อ.บ้านดาด เชียงราย",
-        "apartmentPhoneNo": null
+        "apartmentPhoneNo": null,
+        "apartmentpic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcBYrlxXcdLyTkYFWmYPYLCzis13b4ja8gky7C-_7HWIXCi6Bp"
     },
     {
         "apartmentId": "M160KSD0s",
         "apartmentName": "Lucky Apartment",
         "apartmentAddress": "523/2 ถ.มหิดล ต.สายธาร อ.เมือง หนองคาย",
-        "apartmentPhoneNo": "086-282-2859"
+        "apartmentPhoneNo": "086-282-2859",
+        "apartmentpic": "http://www.clker.com/cliparts/p/4/O/v/Y/H/tall-building-hi.png"
     }
 ]
